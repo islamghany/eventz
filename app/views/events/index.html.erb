@@ -1,9 +1,13 @@
+<div class="flex justify-end mb-4">
+            <%= link_to "New Event", new_event_path , class: "bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
 <ul class="flex flex-col gap-3">
     <% @events.each do |event|%>
     <li>
-        <strong>
-            <%=event.name%>
-            </strong> in <%= event.location%>: <%= price(event)%>
+           <strong class="text-blue-500 hover:text-blue-800">
+            <%= link_to event.name, event_path(event) %>
+            </strong> 
+            in <%= event.location%>: <%= price(event)%>
             <% if event.description != nil %> 
                 <p>
                     <%= event.description%>

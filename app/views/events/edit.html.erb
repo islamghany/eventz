@@ -1,0 +1,33 @@
+<div class="mb-4 flex justify-end">
+        
+         <%= link_to "Back", event_path(@event), class: "bg-gray-500 cursor-pointer hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"  %>
+    </div>
+
+<h2> Editing <%= @event.name%> </h2>
+
+<%= form_with model: @event, local: true do |form| %>
+    <div class="mt-4">
+        <%= form.label :name, class: "block text-gray-700" %>
+        <%= form.text_field :name, class: "form-input mt-1 block w-full" %>
+    </div>
+    <div class="mt-4">
+        <%= form.label :description, class: "block text-gray-700" %>
+        <%= form.text_area :description, class: "form-input mt-1 block w-full" %>
+    </div>
+    <div class="mt-4">
+        <%= form.label :location, class: "block text-gray-700" %>
+        <%= form.text_field :location, class: "form-input mt-1 block w-full" %>
+    </div>
+    <div class="mt-4">
+        <%= form.label :price, class: "block text-gray-700" %>
+        <%= form.text_field :price, class: "form-input mt-1 block w-full" %>
+    </div>
+    <div class="mt-4">
+        <%= form.label :starts_at, class: "block text-gray-700" %>
+        <%= form.datetime_local_field :starts_at, class: "form-input mt-1 block w-full" %>
+    </div>
+    <div class="mt-4">
+        <%= form.submit "Update Event", class: "bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+
+<% end %>
