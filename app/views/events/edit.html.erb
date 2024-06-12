@@ -6,6 +6,17 @@
 <h2> Editing <%= @event.name%> </h2>
 
 <%= form_with model: @event, local: true do |form| %>
+ <% if @event.errors.any? %>
+        <div id="error_explanation" class="bg-red-100 text-red-700 p-4 rounded">
+            <h2 class="text-red-800">
+                <%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+            <ul class="mt-4 list-disc list-inside"?
+                <% @event.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
     <div class="mt-4">
         <%= form.label :name, class: "block text-gray-700" %>
         <%= form.text_field :name, class: "form-input mt-1 block w-full" %>
@@ -21,6 +32,14 @@
     <div class="mt-4">
         <%= form.label :price, class: "block text-gray-700" %>
         <%= form.text_field :price, class: "form-input mt-1 block w-full" %>
+    </div>
+     <div class="mt-4">
+        <%= form.label :capacity, class: "block text-gray-700" %>
+        <%= form.text_field :capacity, class: "form-input mt-1 block w-full" %>
+    </div>
+    <div class="mt-4">
+        <%= form.label :image_file_name, class: "block text-gray-700" %>
+        <%= form.text_field :image_file_name, class: "form-input mt-1 block w-full" %>
     </div>
     <div class="mt-4">
         <%= form.label :starts_at, class: "block text-gray-700" %>

@@ -1,0 +1,33 @@
+<h1 class="font-bold text-2xl">New Registration for <%= link_to @event.name, @event, class: "text-blue-400" %></h1>
+
+<%= form_with model: [@event, @registration] do |form| %>
+       <% if @registration.errors.any? %>
+        <div id="error_explanation" class="bg-red-100 text-red-700 p-4 rounded">
+            <h2 class="text-red-800">
+                <%= pluralize(@registration.errors.count, "error") %> prohibited this event from being saved:</h2>
+            <ul class="mt-4 list-disc list-inside"?
+                <% @registration.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+  <div class="mt-4">
+    <%= form.label :name, class: "block text-gray-700" %>
+    <%= form.text_field :name, class: "form-input mt-1 block w-full" %>
+  </div>
+
+  <div class="mt-4">
+    <%= form.label :email, class: "block text-gray-700" %>
+    <%= form.email_field :email, class: "form-input mt-1 block w-full" %>
+    </div>
+
+    <div class="mt-4">
+        <%= form.label :how_heard, class: "block text-gray-700" %>
+        <%= form.select :how_heard, Registration::HOW_HEARD_OPTIONS, prompt: "Pick one", class: "form-select mt-1 block w-full" %>
+    </div>
+
+    <div class="mt-4">
+        <%= form.submit "Register", class: "bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+<% end %>
